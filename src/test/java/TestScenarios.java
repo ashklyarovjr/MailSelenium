@@ -1,6 +1,7 @@
 import org.testng.annotations.*;
 
 public class TestScenarios {
+    @Parameters("browser")
     @BeforeMethod
     public void setUp() throws Exception {
 
@@ -9,9 +10,14 @@ public class TestScenarios {
 
     @Test
     public void testName() throws Exception {
-       // logIn(String username, String password)
-       // .;
-       //
+        // goToLoginPage(String url)
+        // logIn(String username, String password)
+        // createNewLetter();
+        // saveToDrafts();
+        // sendLetterFromDrafts();
+        // goToSentMail();
+        // checkThatMailHasBeenSent();
+        // logOut();
 
     }
 
