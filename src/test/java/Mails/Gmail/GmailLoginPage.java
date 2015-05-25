@@ -1,5 +1,6 @@
 package Mails.Gmail;
 
+import Mails.Abstracts.Helpers.AbstractMailHelper;
 import Mails.Abstracts.Login.AbstractLoginPage;
 import Mails.Abstracts.Mail.AbstractMailPage;
 import Mails.MailsInfo;
@@ -17,6 +18,10 @@ public class GmailLoginPage extends AbstractLoginPage {
     @FindBy(xpath = MailsInfo.GmailLoginPageInfo.SUBMIT_XPATH)
     private WebElement submitBtn;
 
+    public AbstractLoginPage goToGmailLoginPage() {
+        driver.get(MailsInfo.GmailLoginPageInfo.URL);
+        return this;
+    }
 
     @Override
     public AbstractMailPage submitLogin() {

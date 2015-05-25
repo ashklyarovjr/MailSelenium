@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 
 
 public class YandexMailPage extends AbstractMailPage {
+
     public YandexMailPage(WebDriver driver) {
         super(driver);
     }
+
 }

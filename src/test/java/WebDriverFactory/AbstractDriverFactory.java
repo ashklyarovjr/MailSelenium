@@ -1,7 +1,11 @@
 package WebDriverFactory;
 
-/**
- * Created by Anton_Shkliarov on 5/25/2015.
- */
+
+import org.openqa.selenium.WebDriver;
+
 public abstract class AbstractDriverFactory {
+    public abstract WebDriver getDriver(String parameter);
+
+
+
 }

@@ -1,6 +1,7 @@
 package Mails.Yandex;
 
 
+import Mails.Abstracts.Helpers.AbstractMailHelper;
 import Mails.Abstracts.Login.AbstractLoginPage;
 import Mails.Abstracts.Mail.AbstractMailPage;
 import Mails.MailsInfo;
@@ -16,9 +17,15 @@ public class YandexLoginPage extends AbstractLoginPage {
     @FindBy(xpath = MailsInfo.YandexLoginPageInfo.SUBMIT_XPATH)
     private WebElement submitBtn;
 
+    public AbstractLoginPage goToYandexLoginPage() {
+        driver.get(MailsInfo.YandexLoginPageInfo.URL);
+        return this;
+    }
+
     @Override
-    public AbstractMailPage submitLogin() {
-        return null;
+    public AbstractMailHelper submitLogin() {
+        submitBtn.submit();
+        return new YandexMailPage(driver);
     }
 
 

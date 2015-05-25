@@ -1,6 +1,7 @@
 import org.testng.annotations.*;
 
 public class TestScenarios {
+
     @Parameters("browser")
     @BeforeMethod
     public void setUp() throws Exception {
