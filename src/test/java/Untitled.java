@@ -1,6 +1,9 @@
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
 
@@ -10,7 +13,7 @@ public class Untitled {
 
     @BeforeMethod
     public void setUp() throws Exception {
-        driver = new OperaDriver();
+        driver = new FirefoxDriver();
 
 
     }
@@ -24,7 +27,6 @@ public class Untitled {
 
     @AfterMethod
     public void tearDown() throws Exception {
-
 
     }
 }

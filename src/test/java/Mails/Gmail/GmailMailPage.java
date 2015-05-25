@@ -1,7 +1,7 @@
 package Mails.Gmail;
 
 
-import Mails.Abstracts.AbstractMailPage;
+import Mails.Abstracts.Mail.AbstractMailPage;
 import org.openqa.selenium.WebDriver;
 
 public class GmailMailPage extends AbstractMailPage {

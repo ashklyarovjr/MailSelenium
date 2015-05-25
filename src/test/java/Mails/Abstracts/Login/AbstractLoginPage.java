@@ -1,6 +1,7 @@
-package Mails.Abstracts;
+package Mails.Abstracts.Login;
 
 
+import Mails.Abstracts.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

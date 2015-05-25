@@ -1,7 +1,7 @@
 package Mails.Gmail;
 
-import Mails.Abstracts.AbstractLoginPage;
-import Mails.Abstracts.AbstractMailPage;
+import Mails.Abstracts.Login.AbstractLoginPage;
+import Mails.Abstracts.Mail.AbstractMailPage;
 import Mails.MailsInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,10 +24,5 @@ public class GmailLoginPage extends AbstractLoginPage {
         return new GmailMailPage(driver);
     }
 
-    @Override
-    public AbstractMailPage loginAs(String username, String password) {
-        typeUsername(username, MailsInfo.GmailLoginPageInfo.USERNAME_INPUT_XPATH);
-        typePassword(password, MailsInfo.GmailLoginPageInfo.PASSWORD_INPUT_XPATH);
-        return submitLogin();
-    }
+
 }

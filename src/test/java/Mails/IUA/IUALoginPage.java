@@ -1,7 +1,7 @@
 package Mails.IUA;
 
-import Mails.Abstracts.AbstractLoginPage;
-import Mails.Abstracts.AbstractMailPage;
+import Mails.Abstracts.Login.AbstractLoginPage;
+import Mails.Abstracts.Mail.AbstractMailPage;
 import Mails.MailsInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,10 +21,5 @@ public class IUALoginPage extends AbstractLoginPage {
         return new IUAMailPage(driver);
     }
 
-    @Override
-    public AbstractMailPage loginAs(String username, String password) {
-        typeUsername(username, MailsInfo.IUaLoginPageInfo.USERNAME_INPUT_XPATH);
-        typePassword(username, MailsInfo.IUaLoginPageInfo.PASSWORD_INPUT_XPATH);
-        return submitLogin();
-    }
+
 }

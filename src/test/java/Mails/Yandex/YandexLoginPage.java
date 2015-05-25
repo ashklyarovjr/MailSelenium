@@ -1,8 +1,8 @@
 package Mails.Yandex;
 
 
-import Mails.Abstracts.AbstractLoginPage;
-import Mails.Abstracts.AbstractMailPage;
+import Mails.Abstracts.Login.AbstractLoginPage;
+import Mails.Abstracts.Mail.AbstractMailPage;
 import Mails.MailsInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,8 +21,5 @@ public class YandexLoginPage extends AbstractLoginPage {
         return null;
     }
 
-    @Override
-    public AbstractMailPage loginAs(String username, String password) {
-        return null;
-    }
+
 }

@@ -29,4 +29,8 @@ public final class MailsInfo {
         public static final String SUBMIT_XPATH = "//div[@class='Right']//input[@type='submit']";
 
     }
+
+    public static final class YandexMailPageInfo {
+
+    }
 }

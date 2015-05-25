@@ -8,6 +8,8 @@ public abstract class AbstractPage {
 
     protected String title;
 
+    protected String url;
+
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
         title = driver.getTitle();
@@ -15,5 +17,13 @@ public abstract class AbstractPage {
 
     public WebDriver getDriver() {
         return driver;
+    }
+
+    protected void setUrl(String url) {
+        this.url = url;
+    }
+
+    protected String getUrl() {
+        return url;
     }
 }
