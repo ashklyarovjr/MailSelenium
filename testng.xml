@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Gmail">
+<suite name="All">
     <test name="FFTest">
         <parameter name="browser" value="firefox"/>
         <classes>
@@ -21,12 +21,6 @@
     </test>
     <test name="OperaTest">
         <parameter name="browser" value="chrome"/>
-        <classes>
-            <class name="TestScenarios"/>
-        </classes>
-    </test>
-    <test name="YandexBrowserTest">
-        <parameter name="browser" value="yandex"/>
         <classes>
             <class name="TestScenarios"/>
         </classes>

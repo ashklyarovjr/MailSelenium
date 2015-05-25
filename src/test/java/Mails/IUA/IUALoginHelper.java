@@ -14,10 +14,11 @@ public class IUALoginHelper  extends AbstractLoginHelper {
         super(new IUALoginPage(driver));
     }
 
+
     @Override
     public AbstractMailHelper loginAs() {
-        loginPage.typeUsername(MailsInfo.IUaLoginPageInfo.USERNAME, MailsInfo.IUaLoginPageInfo.USERNAME_INPUT_XPATH);
-        loginPage.typePassword(MailsInfo.IUaLoginPageInfo.PASSWORD, MailsInfo.IUaLoginPageInfo.PASSWORD_INPUT_XPATH);
-        return loginPage.submitLogin();
+        loginPage.typeUsername(MailsInfo.IUaLoginPageInfo.USERNAME);
+        loginPage.typePassword(MailsInfo.IUaLoginPageInfo.PASSWORD);
+        return new IUAMailHelper(loginPage.getDriver());
     }
 }

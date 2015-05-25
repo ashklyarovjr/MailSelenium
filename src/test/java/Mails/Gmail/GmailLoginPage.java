@@ -13,10 +13,19 @@ public class GmailLoginPage extends AbstractLoginPage {
 
     public GmailLoginPage(WebDriver driver) {
         super(driver);
+        setPasswordInpt(passwordInpt);
+        setUsernameInpt(usernameInpt);
     }
+
+    @FindBy(xpath = MailsInfo.GmailLoginPageInfo.USERNAME_INPUT_XPATH)
+    private WebElement usernameInpt;
+
+    @FindBy(xpath = MailsInfo.GmailLoginPageInfo.PASSWORD_INPUT_XPATH)
+    private WebElement passwordInpt;
 
     @FindBy(xpath = MailsInfo.GmailLoginPageInfo.SUBMIT_XPATH)
     private WebElement submitBtn;
+
 
     public AbstractLoginPage goToGmailLoginPage() {
         driver.get(MailsInfo.GmailLoginPageInfo.URL);

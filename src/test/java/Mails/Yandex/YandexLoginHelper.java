@@ -14,8 +14,8 @@ public class YandexLoginHelper extends AbstractLoginHelper {
 
     @Override
     public AbstractMailHelper loginAs() {
-        loginPage.typeUsername(MailsInfo.YandexLoginPageInfo.USERNAME, MailsInfo.YandexLoginPageInfo.USERNAME_INPUT_XPATH);
-        loginPage.typePassword(MailsInfo.YandexLoginPageInfo.PASSWORD, MailsInfo.YandexLoginPageInfo.PASSWORD_INPUT_XPATH);
-        return loginPage.submitLogin();
+        loginPage.typeUsername(MailsInfo.YandexLoginPageInfo.USERNAME);
+        loginPage.typePassword(MailsInfo.YandexLoginPageInfo.PASSWORD);
+        return new YandexMailHelper(loginPage.getDriver());
     }
 }

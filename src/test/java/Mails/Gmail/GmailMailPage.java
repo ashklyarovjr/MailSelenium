@@ -9,4 +9,6 @@ public class GmailMailPage extends AbstractMailPage {
     public GmailMailPage(WebDriver driver) {
         super(driver);
     }
+
+
 }

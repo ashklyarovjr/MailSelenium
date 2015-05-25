@@ -23,7 +23,7 @@ public class YandexLoginPage extends AbstractLoginPage {
     }
 
     @Override
-    public AbstractMailHelper submitLogin() {
+    public AbstractMailPage submitLogin() {
         submitBtn.submit();
         return new YandexMailPage(driver);
     }

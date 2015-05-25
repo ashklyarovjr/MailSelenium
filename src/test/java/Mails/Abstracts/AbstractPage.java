@@ -26,4 +26,13 @@ public abstract class AbstractPage {
     protected String getUrl() {
         return url;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public AbstractPage goToPage() {
+        driver.get(url);
+        return this;
+    }
 }

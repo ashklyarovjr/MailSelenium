@@ -30,6 +30,18 @@ public final class MailsInfo {
 
     }
 
+    public static final class GmailMailPageInfo {
+        public static final String COMPOSE_BTN_XPATH = "//div[@class='z0']/div";
+        public static final String SENT_MAIL_TAB_XPATH = "";
+        public static final String DRAFTS_TAB_XPATH = "";
+        public static final String COMPOSE_FORM_TO_XPATH = "";
+        public static final String COMPOSE_FORM_SUBJ_XPATH = "";
+        public static final String COMPOSE_FORM_TEXT_XPATH = "";
+        public static final String COMPOSE_FORM_SENDBTN_XPATH = "";
+        public static final String COMPOSE_FORM_SEND_AND_QUITBTN_XPATH = "";
+
+    }
+
     public static final class YandexMailPageInfo {
 
     }
