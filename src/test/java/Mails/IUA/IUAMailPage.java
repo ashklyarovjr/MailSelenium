@@ -1,28 +1,32 @@
 package Mails.IUA;
 
-import Mails.Abstracts.Mail.AbstractMailPage;
-import Mails.Abstracts.SendMailForm.AbstractMailForm;
+import Mails.Abstracts.AbstractPage;
+import Mails.Abstracts.MailPageInterface;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 
-public class IUAMailPage extends AbstractMailPage {
+public class IUAMailPage extends AbstractPage implements MailPageInterface {
+
+    public IUAMailPage(WebDriver driver, String url) {
+        super(driver, url);
+    }
+
     public IUAMailPage(WebDriver driver) {
         super(driver);
     }
 
     @Override
-    public AbstractMailForm composeMailBtnClick(WebElement mailBtn) {
+    public AbstractPage composeMailBtnClick() {
         return null;
     }
 
     @Override
-    public AbstractMailPage draftsTabClick(WebElement draftsTab) {
+    public AbstractPage draftsTabClick() {
         return null;
     }
 
     @Override
-    public AbstractMailPage sentMailTabClick(WebElement sentMailTab) {
+    public AbstractPage sentMailTabClick() {
         return null;
     }
 }

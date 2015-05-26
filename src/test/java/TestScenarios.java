@@ -1,4 +1,4 @@
-import Mails.Gmail.GmailLoginHelper;
+import Mails.Gmail.Steps.GmailLoginSteps;
 import WebDriverFactory.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class  TestScenarios {
 
-    GmailLoginHelper gmailLoginHelper;
+    GmailLoginSteps gmailLoginSteps;
 
     WebDriverFactory driverFactory;
 
@@ -20,15 +20,15 @@ public class  TestScenarios {
         //driverFactory = new WebDriverFactory();
 
          driver = new FirefoxDriver();
-        //gmailLoginHelper = new GmailLoginHelper(driverFactory.getDriver(browser));
+        //gmailLoginSteps = new GmailLoginSteps(driverFactory.getDriver(browser));
 
-        gmailLoginHelper = new GmailLoginHelper(driver);
+        gmailLoginSteps = new GmailLoginSteps();
     }
 
     @Test()
     public void testGmail() throws Exception {
 
-        gmailLoginHelper.loginAs();
+       // gmailLoginSteps.loginAs();
 
         // goToLoginPage(String url)
         // .logIn(String username, String password)

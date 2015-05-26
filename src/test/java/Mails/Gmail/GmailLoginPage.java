@@ -1,20 +1,18 @@
 package Mails.Gmail;
 
-import Mails.Abstracts.Helpers.AbstractMailHelper;
-import Mails.Abstracts.Login.AbstractLoginPage;
-import Mails.Abstracts.Mail.AbstractMailPage;
+import Mails.Abstracts.AbstractPage;
+import Mails.Abstracts.LoginPageInterface;
 import Mails.MailsInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class GmailLoginPage extends AbstractLoginPage {
+public class GmailLoginPage extends AbstractPage implements LoginPageInterface {
+
 
     public GmailLoginPage(WebDriver driver) {
         super(driver, MailsInfo.GmailLoginPageInfo.URL);
-        setPasswordInpt(passwordInpt);
-        setUsernameInpt(usernameInpt);
     }
 
     @FindBy(xpath = MailsInfo.GmailLoginPageInfo.USERNAME_INPUT_XPATH)
@@ -26,11 +24,26 @@ public class GmailLoginPage extends AbstractLoginPage {
     @FindBy(xpath = MailsInfo.GmailLoginPageInfo.SUBMIT_XPATH)
     private WebElement submitBtn;
 
+    @FindBy(xpath = MailsInfo.GmailLoginPageInfo.NEXT_BTN_XPATH)
+    private WebElement nextBtn;
+
 
     @Override
-    public AbstractMailPage submitLogin() {
+    public AbstractPage typeUsername(String username) {
+        usernameInpt.sendKeys(username);
+        return this;
+    }
+
+    @Override
+    public AbstractPage typePassword(String password) {
+        passwordInpt.sendKeys(password);
+        return this;
+    }
+
+    @Override
+    public AbstractPage submitLogin() {
         submitBtn.submit();
-        return new GmailMailPage(driver);
+        return new GmailReceivedMailPage(driver);
     }
 
 

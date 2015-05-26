@@ -1,17 +1,17 @@
-package Mails.Yandex;
+package Mails.Gmail;
 
 import Mails.Abstracts.AbstractPage;
 import Mails.Abstracts.MailPageInterface;
 import org.openqa.selenium.WebDriver;
 
 
-public class YandexMailPage extends AbstractPage implements MailPageInterface {
+public class GmailSentMailPage extends AbstractPage implements MailPageInterface {
 
-    public YandexMailPage(WebDriver driver, String url) {
+    public GmailSentMailPage(WebDriver driver, String url) {
         super(driver, url);
     }
 
-    public YandexMailPage(WebDriver driver) {
+    public GmailSentMailPage(WebDriver driver) {
         super(driver);
     }
 
@@ -29,4 +29,6 @@ public class YandexMailPage extends AbstractPage implements MailPageInterface {
     public AbstractPage sentMailTabClick() {
         return null;
     }
+
+
 }
