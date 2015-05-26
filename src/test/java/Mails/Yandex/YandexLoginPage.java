@@ -11,16 +11,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class YandexLoginPage extends AbstractLoginPage {
     public YandexLoginPage(WebDriver driver) {
-        super(driver);
+        super(driver, MailsInfo.YandexLoginPageInfo.URL);
     }
 
     @FindBy(xpath = MailsInfo.YandexLoginPageInfo.SUBMIT_XPATH)
     private WebElement submitBtn;
 
-    public AbstractLoginPage goToYandexLoginPage() {
-        driver.get(MailsInfo.YandexLoginPageInfo.URL);
-        return this;
-    }
+
 
     @Override
     public AbstractMailPage submitLogin() {

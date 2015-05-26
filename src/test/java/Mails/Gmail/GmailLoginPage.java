@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 public class GmailLoginPage extends AbstractLoginPage {
 
     public GmailLoginPage(WebDriver driver) {
-        super(driver);
+        super(driver, MailsInfo.GmailLoginPageInfo.URL);
         setPasswordInpt(passwordInpt);
         setUsernameInpt(usernameInpt);
     }
@@ -26,11 +26,6 @@ public class GmailLoginPage extends AbstractLoginPage {
     @FindBy(xpath = MailsInfo.GmailLoginPageInfo.SUBMIT_XPATH)
     private WebElement submitBtn;
 
-
-    public AbstractLoginPage goToGmailLoginPage() {
-        driver.get(MailsInfo.GmailLoginPageInfo.URL);
-        return this;
-    }
 
     @Override
     public AbstractMailPage submitLogin() {

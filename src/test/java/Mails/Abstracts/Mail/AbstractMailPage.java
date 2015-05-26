@@ -8,9 +8,10 @@ import org.openqa.selenium.WebElement;
 
 public abstract class AbstractMailPage extends AbstractPage implements MailPageInterface {
 
-    public AbstractMailPage(WebDriver driver) {
-        super(driver);
+    public AbstractMailPage(WebDriver driver, String  url) {
+        super(driver, url);
     }
+
 
     @Override
     public AbstractMailForm composeMailBtnClick(WebElement mailBtn) {

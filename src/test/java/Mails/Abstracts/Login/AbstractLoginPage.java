@@ -10,8 +10,8 @@ import org.openqa.selenium.support.FindBy;
 public abstract class AbstractLoginPage extends AbstractPage implements LoginPageInterface {
 
 
-    public AbstractLoginPage(WebDriver driver) {
-        super(driver);
+    public AbstractLoginPage(WebDriver driver, String url) {
+        super(driver, url);
     }
 
     protected WebElement usernameInpt;

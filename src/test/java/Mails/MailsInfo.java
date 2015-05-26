@@ -31,6 +31,7 @@ public final class MailsInfo {
     }
 
     public static final class GmailMailPageInfo {
+        public static final String URL = "";
         public static final String COMPOSE_BTN_XPATH = "//div[@class='z0']/div";
         public static final String SENT_MAIL_TAB_XPATH = "";
         public static final String DRAFTS_TAB_XPATH = "";

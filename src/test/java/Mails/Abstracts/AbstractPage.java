@@ -10,6 +10,13 @@ public abstract class AbstractPage {
 
     protected String url;
 
+    public AbstractPage(WebDriver driver, String url) {
+        this.driver = driver;
+        this.url = url;
+        title = driver.getTitle();
+
+    }
+
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
         title = driver.getTitle();

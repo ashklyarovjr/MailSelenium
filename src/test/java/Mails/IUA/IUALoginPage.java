@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class IUALoginPage extends AbstractLoginPage {
     public IUALoginPage(WebDriver driver) {
-        super(driver);
+        super(driver, MailsInfo.IUaLoginPageInfo.URL);
         setUsernameInpt(usernameInpt);
         setPasswordInpt(passwordInpt);
     }
@@ -24,10 +24,6 @@ public class IUALoginPage extends AbstractLoginPage {
     @FindBy(xpath = MailsInfo.IUaLoginPageInfo.SUBMIT_XPATH)
     private WebElement submitBtn;
 
-    public AbstractLoginPage goToIUALoginPage() {
-        driver.get(MailsInfo.IUaLoginPageInfo.URL);
-        return this;
-    }
 
     @Override
     public AbstractMailPage submitLogin() {

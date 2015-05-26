@@ -20,6 +20,9 @@ public class GmailLoginHelper extends AbstractLoginHelper{
 
     @Override
     public AbstractMailHelper loginAs() {
+        loginPage.goToPage();
+        WebElement waitForPageLoad = (new WebDriverWait(loginPage.getDriver(),10)).until((WebDriver driver) -> driver.findElement(By.xpath(MailsInfo.GmailLoginPageInfo.USERNAME_INPUT_XPATH)));
+
         assertThat(loginPage.getDriver().getTitle(), is(loginPage.getTitle()));
 
         loginPage.typePassword(MailsInfo.GmailLoginPageInfo.USERNAME);
