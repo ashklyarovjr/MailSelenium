@@ -7,15 +7,14 @@ import Mails.MailsInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class YandexLoginPage extends AbstractPage implements LoginPageInterface {
 
-    public YandexLoginPage(WebDriver driver, String url) {
-        super(driver, url);
-    }
 
     public YandexLoginPage(WebDriver driver) {
-        super(driver);
+        super(driver, MailsInfo.IUALoginPageInfo.URL);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = MailsInfo.YandexLoginPageInfo.USERNAME_INPUT_XPATH)
@@ -27,19 +26,33 @@ public class YandexLoginPage extends AbstractPage implements LoginPageInterface 
     @FindBy(xpath = MailsInfo.YandexLoginPageInfo.SUBMIT_XPATH)
     private WebElement submitBtn;
 
+    public WebElement getUsernameInpt() {
+        return usernameInpt;
+    }
 
-    @Override
-    public AbstractPage typeUsername(String username) {
-        return null;
+    public WebElement getPasswordInpt() {
+        return passwordInpt;
+    }
+
+    public WebElement getSubmitBtn() {
+        return submitBtn;
     }
 
     @Override
-    public AbstractPage typePassword(String password) {
-        return null;
+    public YandexLoginPage typeUsername(String username) {
+        usernameInpt.sendKeys(username);
+        return this;
     }
 
     @Override
-    public AbstractPage submitLogin() {
-        return null;
+    public YandexLoginPage typePassword(String password) {
+        passwordInpt.sendKeys(password);
+        return this;
+    }
+
+    @Override
+    public YandexReceivedMailPage submitLogin() {
+        submitBtn.submit();
+        return new YandexReceivedMailPage(driver);
     }
 }

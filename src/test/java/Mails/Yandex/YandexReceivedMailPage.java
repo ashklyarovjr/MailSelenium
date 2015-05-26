@@ -1,5 +1,4 @@
-package Mails.IUA;
-
+package Mails.Yandex;
 
 import Mails.Abstracts.AbstractPage;
 import Mails.Abstracts.MailPageInterface;
@@ -9,20 +8,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class IUASentMailPage extends AbstractPage implements MailPageInterface {
 
-    public IUASentMailPage(WebDriver driver) {
+public class YandexReceivedMailPage extends AbstractPage implements MailPageInterface {
+
+    public YandexReceivedMailPage(WebDriver driver) {
         super(driver, driver.getCurrentUrl());
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = MailsInfo.IUAMailPageInfo.COMPOSE_BTN_XPATH)
+    @FindBy(xpath = MailsInfo.YandexMailPageInfo.COMPOSE_BTN_XPATH)
     private WebElement composeBtn;
 
-    @FindBy(xpath = MailsInfo.IUAMailPageInfo.DRAFTS_TAB_XPATH)
+    @FindBy(xpath = MailsInfo.YandexMailPageInfo.DRAFTS_TAB_XPATH)
     private WebElement draftsTab;
 
-    @FindBy(xpath = MailsInfo.IUAMailPageInfo.SENT_MAIL_TAB_XPATH)
+    @FindBy(xpath = MailsInfo.YandexMailPageInfo.SENT_MAIL_TAB_XPATH)
     private WebElement sentMailTab;
 
     public WebElement getComposeBtn() {
@@ -38,20 +38,20 @@ public class IUASentMailPage extends AbstractPage implements MailPageInterface {
     }
 
     @Override
-    public IUAMailForm composeMailBtnClick() {
+    public YandexMailForm composeMailBtnClick() {
         composeBtn.click();
-        return new IUAMailForm(driver);
+        return new YandexMailForm(driver);
     }
 
     @Override
-    public IUADraftsPage draftsTabClick() {
+    public YandexDraftsPage draftsTabClick() {
         draftsTab.click();
-        return new IUADraftsPage(driver);
+        return new YandexDraftsPage(driver);
     }
 
     @Override
-    public IUASentMailPage sentMailTabClick() {
+    public YandexSentMailPage sentMailTabClick() {
         sentMailTab.click();
-        return this;
+        return new YandexSentMailPage(driver);
     }
 }
