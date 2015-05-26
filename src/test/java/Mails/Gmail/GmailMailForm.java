@@ -6,12 +6,14 @@ import Mails.MailsInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 
 public class GmailMailForm extends AbstractPage implements MailFormInterface {
 
     public GmailMailForm(WebDriver driver) {
         super(driver, driver.getCurrentUrl());
+        PageFactory.initElements(driver, this);
     }
     
     @FindBy(xpath = MailsInfo.GmailMailPageInfo.COMPOSE_FORM_TO_XPATH)

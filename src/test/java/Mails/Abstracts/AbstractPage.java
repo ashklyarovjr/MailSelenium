@@ -20,7 +20,6 @@ public abstract class AbstractPage {
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
-        title = driver.getTitle();
     }
 
     public WebDriver getDriver() {
@@ -41,6 +40,7 @@ public abstract class AbstractPage {
 
     public AbstractPage goToPage() {
         driver.get(url);
+        title = driver.getTitle();
         return this;
     }
 }

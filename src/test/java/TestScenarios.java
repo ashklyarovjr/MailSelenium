@@ -1,4 +1,5 @@
 import Mails.Gmail.Steps.GmailLoginSteps;
+import Mails.IUA.Steps.IUALoginSteps;
 import WebDriverFactory.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,6 +11,10 @@ public class  TestScenarios {
 
     GmailLoginSteps gmailLoginSteps;
 
+    IUALoginSteps iuaLoginSteps;
+
+
+
     WebDriverFactory driverFactory;
 
     WebDriver driver;
@@ -19,16 +24,19 @@ public class  TestScenarios {
 
         //driverFactory = new WebDriverFactory();
 
-         driver = new FirefoxDriver();
+        driver = new FirefoxDriver();
         //gmailLoginSteps = new GmailLoginSteps(driverFactory.getDriver(browser));
 
-        gmailLoginSteps = new GmailLoginSteps();
+        gmailLoginSteps = new GmailLoginSteps(driver);
+
+        iuaLoginSteps = new IUALoginSteps(driver);
     }
 
     @Test()
     public void testGmail() throws Exception {
 
-       // gmailLoginSteps.loginAs();
+        gmailLoginSteps.loginAs()
+                .composeMailAndSaveToDrafts();
 
         // goToLoginPage(String url)
         // .logIn(String username, String password)
@@ -47,7 +55,8 @@ public class  TestScenarios {
 
     @Test
     public void testIUA() throws Exception {
-
+        iuaLoginSteps.loginAs()
+                .composeMailAndSaveToDrafts();
 
     }
 

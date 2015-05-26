@@ -1,5 +1,4 @@
-package Mails.Gmail;
-
+package Mails.IUA;
 
 import Mails.Abstracts.AbstractPage;
 import Mails.Abstracts.MailPageInterface;
@@ -9,23 +8,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class GmailDraftsPage extends AbstractPage implements MailPageInterface {
 
-    public GmailDraftsPage(WebDriver driver) {
+public class IUAReceivedMailPage extends AbstractPage implements MailPageInterface {
+
+    public IUAReceivedMailPage(WebDriver driver) {
         super(driver, driver.getCurrentUrl());
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = MailsInfo.GmailMailPageInfo.COMPOSE_BTN_XPATH)
+    @FindBy(xpath = MailsInfo.IUAMailPageInfo.COMPOSE_BTN_XPATH)
     private WebElement composeBtn;
 
-    @FindBy(xpath = MailsInfo.GmailMailPageInfo.DRAFTS_TAB_XPATH)
+    @FindBy(xpath = MailsInfo.IUAMailPageInfo.DRAFTS_TAB_XPATH)
     private WebElement draftsTab;
 
-    @FindBy(xpath = MailsInfo.GmailMailPageInfo.SENT_MAIL_TAB_XPATH)
+    @FindBy(xpath = MailsInfo.IUAMailPageInfo.SENT_MAIL_TAB_XPATH)
     private WebElement sentMailTab;
-
-    //@FindBy(xpath = )
 
     public WebElement getComposeBtn() {
         return composeBtn;
@@ -40,21 +38,20 @@ public class GmailDraftsPage extends AbstractPage implements MailPageInterface {
     }
 
     @Override
-    public GmailMailForm composeMailBtnClick() {
+    public IUAMailForm composeMailBtnClick() {
         composeBtn.click();
-        return new GmailMailForm(driver);
+        return new IUAMailForm(driver);
     }
 
     @Override
-    public GmailDraftsPage draftsTabClick() {
+    public IUADraftsPage draftsTabClick() {
         draftsTab.click();
-        return this;
+        return new IUADraftsPage(driver);
     }
 
     @Override
-    public GmailSentMailPage sentMailTabClick() {
+    public IUASentMailPage sentMailTabClick() {
         sentMailTab.click();
-        return new GmailSentMailPage(driver);
+        return new IUASentMailPage(driver);
     }
-
 }

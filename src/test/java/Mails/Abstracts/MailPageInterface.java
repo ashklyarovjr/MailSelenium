@@ -9,5 +9,4 @@ public interface MailPageInterface {
 
     AbstractPage sentMailTabClick();
 
-
 }

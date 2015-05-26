@@ -7,11 +7,13 @@ import Mails.MailsInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class GmailReceivedMailPage extends AbstractPage implements MailPageInterface {
 
     public GmailReceivedMailPage(WebDriver driver) {
-        super(driver, MailsInfo.GmailMailPageInfo.URL);
+        super(driver, driver.getCurrentUrl());
+        PageFactory.initElements(driver, this);
     }
 
 
@@ -24,6 +26,17 @@ public class GmailReceivedMailPage extends AbstractPage implements MailPageInter
     @FindBy(xpath = MailsInfo.GmailMailPageInfo.SENT_MAIL_TAB_XPATH)
     private WebElement sentMailTab;
 
+    public WebElement getComposeBtn() {
+        return composeBtn;
+    }
+
+    public WebElement getDraftsTab() {
+        return draftsTab;
+    }
+
+    public WebElement getSentMailTab() {
+        return sentMailTab;
+    }
 
     @Override
     public GmailMailForm composeMailBtnClick() {
