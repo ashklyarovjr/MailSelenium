@@ -13,6 +13,8 @@ public abstract class AbstractMailPage extends AbstractPage implements MailPageI
     }
 
 
+
+
     @Override
     public AbstractMailForm composeMailBtnClick(WebElement mailBtn) {
         return null;
