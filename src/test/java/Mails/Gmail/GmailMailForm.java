@@ -31,6 +31,18 @@ public class GmailMailForm extends AbstractPage implements MailFormInterface {
     @FindBy(xpath = MailsInfo.GmailMailPageInfo.COMPOSE_FORM_SENDBTN_XPATH)
     private WebElement sendBtn;
 
+    public WebElement getToField() {
+        return toField;
+    }
+
+    public WebElement getSubjField() {
+        return subjField;
+    }
+
+    public WebElement getTextField() {
+        return textField;
+    }
+
     @Override
     public GmailMailForm fillInToField(String email) {
         toField.sendKeys(email);

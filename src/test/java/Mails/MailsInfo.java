@@ -42,7 +42,8 @@ public final class MailsInfo {
         public static final String COMPOSE_FORM_TEXT_XPATH = "//div[@role='textbox']";
         public static final String COMPOSE_FORM_SENDBTN_XPATH = "//div[@id=':7p']";
         public static final String COMPOSE_FORM_SAVE_AND_QUITBTN_XPATH = "//*[@id=':55']/div/div[1]/span/a";
-        //public static final String
+        public static final String COMPOSED_DRAFT_XPATH = "//tr//span[text()='" + GmailMailPageInfo.FORM_SUBJ + "']";
+
     }
 
     public static final class YandexMailPageInfo {

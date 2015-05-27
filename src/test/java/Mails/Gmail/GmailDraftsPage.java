@@ -25,7 +25,8 @@ public class GmailDraftsPage extends AbstractPage implements MailPageInterface {
     @FindBy(xpath = MailsInfo.GmailMailPageInfo.SENT_MAIL_TAB_XPATH)
     private WebElement sentMailTab;
 
-    //@FindBy(xpath = )
+    @FindBy(xpath = MailsInfo.GmailMailPageInfo.COMPOSED_DRAFT_XPATH)
+    private WebElement composedDraft;
 
     public WebElement getComposeBtn() {
         return composeBtn;
@@ -37,6 +38,11 @@ public class GmailDraftsPage extends AbstractPage implements MailPageInterface {
 
     public WebElement getSentMailTab() {
         return sentMailTab;
+    }
+
+    public GmailMailForm composedDraftClick() {
+        composedDraft.click();
+        return new GmailMailForm(driver);
     }
 
     @Override
