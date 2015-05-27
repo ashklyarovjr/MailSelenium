@@ -74,7 +74,7 @@ public class YandexMailSteps {
         loginPage = sentMailPage.userLogoClick()
                 .logoutBtnClick();
 
-        Waits.waitForElementPresent(loginPage.getDriver(), MailsInfo.YandexMailPageInfo.YANDEX_LOGO_XPATH);
+        Waits.waitForElementPresent(loginPage.getDriver(), MailsInfo.YANDEX_LOGO_XPATH);
 
         return new GmailLoginSteps(sentMailPage.getDriver());
     }

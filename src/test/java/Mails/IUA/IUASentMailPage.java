@@ -25,7 +25,10 @@ public class IUASentMailPage extends AbstractPage implements MailPageInterface {
     @FindBy(xpath = MailsInfo.IUAMailPageInfo.SENT_MAIL_TAB_XPATH)
     private WebElement sentMailTab;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = MailsInfo.IUAMailPageInfo.USER_OPTIONS_BUTTON_XPATH)
+    private WebElement userOptions;
+
+    @FindBy(xpath = MailsInfo.IUAMailPageInfo.LOGOUT_BTN_XPATH)
     private WebElement logOutBtn;
 
     public WebElement getComposeBtn() {
@@ -38,6 +41,11 @@ public class IUASentMailPage extends AbstractPage implements MailPageInterface {
 
     public WebElement getSentMailTab() {
         return sentMailTab;
+    }
+
+    public IUASentMailPage userLogoClick() {
+        userOptions.click();
+        return this;
     }
 
     @Override

@@ -2,6 +2,9 @@ package Mails;
 
 
 public final class MailsInfo {
+    public static final String YANDEX_LOGO_XPATH = "//div[contains(@class, 'logo')]";
+    public static final String IUA_LOGO_XPATH = "//img[@alt = 'I.UA']";
+
     public static final class YandexLoginPageInfo {
         public static final String URL = "https://mail.yandex.com/";
         public static final String USERNAME = "test.petrov.123@yandex.ru";
@@ -65,7 +68,6 @@ public final class MailsInfo {
         public static final String DRAFT_FORM_TO_FIELD = "//div[@draggable]/input";
         public static final String USER_LOGO_PIC_XPATH = "//span[contains(@class, 'user-pic')]";
         public static final String LOGOUT_BTN_XPATH = "(//a[contains(@href, 'passport.yandex.com')])[6]";
-        public static final String YANDEX_LOGO_XPATH = "//div[contains(@class, 'logo')]";
     }
 
     public static final class IUAMailPageInfo {
@@ -80,5 +82,7 @@ public final class MailsInfo {
         public static final String COMPOSE_FORM_SENDBTN_XPATH = "//div[@class='Left']/p[1]/input[@name='send']";
         public static final String COMPOSE_FORM_SAVE_AND_QUITBTN_XPATH = "//div[@class='Left']/p[1]/input[@name='save_in_drafts']";
         public static final String COMPOSED_DRAFT_XPATH = ".//*[@id='mesgList']//div[1]//span[3]/span";
+        public static final String USER_OPTIONS_BUTTON_XPATH = "//div[@class='ho_nav']//li[@class = 'ho_menu_item']/span";
+        public static final String LOGOUT_BTN_XPATH = "//a[contains(@href, 'logout.php')]";
     }
 }

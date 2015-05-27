@@ -5,11 +5,9 @@ import Mails.Gmail.GmailDraftsPage;
 import Mails.Gmail.GmailMailForm;
 import Mails.Gmail.GmailReceivedMailPage;
 import Mails.Gmail.GmailSentMailPage;
+import Mails.Gmail.Steps.GmailLoginSteps;
 import Mails.Helpers.Waits;
-import Mails.IUA.IUADraftsPage;
-import Mails.IUA.IUAMailForm;
-import Mails.IUA.IUAReceivedMailPage;
-import Mails.IUA.IUASentMailPage;
+import Mails.IUA.*;
 import Mails.MailsInfo;
 import org.openqa.selenium.By;
 
@@ -17,6 +15,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 public class IUAMailSteps {
+
+    IUALoginPage loginPage;
 
     IUAReceivedMailPage mainPage;
 
@@ -46,7 +46,8 @@ public class IUAMailSteps {
     }
 
     public IUAMailSteps openSameMailInDraftsAndSend() {
-        assertThat(mainPage.getDriver().getTitle(), containsString(MailsInfo.IUALoginPageInfo.USERNAME));
+
+        assertThat(mainPage.getDriver().getTitle(), containsString("I.UA"));
 
         draftsPage = mainPage.draftsTabClick();
 
@@ -55,14 +56,27 @@ public class IUAMailSteps {
         mailForm = draftsPage.composedDraftClick();
 
         assertThat(mailForm.getToField().getText(), containsString(MailsInfo.YandexLoginPageInfo.USERNAME));
-        assertThat(mailForm.getSubjField().getText(), containsString(MailsInfo.IUAMailPageInfo.FORM_SUBJ));
+        assertThat(mailForm.getSubjField().getAttribute("value"), containsString(MailsInfo.IUAMailPageInfo.FORM_SUBJ));
         assertThat(mailForm.getTextField().getText(), containsString(MailsInfo.IUAMailPageInfo.FORM_TEXT));
 
         sentMailPage =  mailForm.sendMail()
                 .sentMailTabClick();
 
-        Waits.waitForElementPresent(sentMailPage.getDriver(), MailsInfo.GmailMailPageInfo.COMPOSED_DRAFT_XPATH);
+        Waits.waitForElementPresent(sentMailPage.getDriver(), MailsInfo.IUAMailPageInfo.COMPOSED_DRAFT_XPATH);
 
         return this;
+    }
+
+    public IUALoginSteps logOut() {
+
+        sentMailPage = sentMailPage.userLogoClick();
+
+        Waits.waitForElementPresent(sentMailPage.getDriver(), MailsInfo.IUAMailPageInfo.LOGOUT_BTN_XPATH);
+
+        loginPage = sentMailPage.logoutBtnClick();
+
+        Waits.waitForElementPresent(loginPage.getDriver(), MailsInfo.IUA_LOGO_XPATH);
+
+        return new IUALoginSteps(sentMailPage.getDriver());
     }
 }
