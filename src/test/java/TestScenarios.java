@@ -1,5 +1,6 @@
 import Mails.Gmail.Steps.GmailLoginSteps;
 import Mails.IUA.Steps.IUALoginSteps;
+import Mails.Yandex.Steps.YandexLoginSteps;
 import WebDriverFactory.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,7 +14,7 @@ public class  TestScenarios {
 
     IUALoginSteps iuaLoginSteps;
 
-
+    YandexLoginSteps yandexLoginSteps;
 
     WebDriverFactory driverFactory;
 
@@ -30,30 +31,29 @@ public class  TestScenarios {
         gmailLoginSteps = new GmailLoginSteps(driver);
 
         iuaLoginSteps = new IUALoginSteps(driver);
+
+        yandexLoginSteps = new YandexLoginSteps(driver);
     }
 
-    @Test()
+    @Test(enabled = false)
     public void testGmail() throws Exception {
 
         gmailLoginSteps.loginAs()
-                .composeMailAndSaveToDrafts();
-
-        // goToLoginPage(String url)
-        // .logIn(String username, String password)
-        // .createNewLetter();
-        // .saveToDrafts();
-        // .sendLetterFromDrafts();
-        // .goToSentMail();
-        // .checkThatMailHasBeenSent();
-        // .logOut();
+                .composeMailAndSaveToDrafts()
+                .openSameMailInDraftsAndSend()
+                .logOut();
     }
 
-    @Test
+    @Test(enabled = true)
     public void testYandex() throws Exception {
 
+        yandexLoginSteps.loginAs()
+                .composeMailAndSaveToDrafts()
+                .openSameMailInDraftsAndSend()
+                .logOut();
     }
 
-    @Test
+    @Test(enabled = false)
     public void testIUA() throws Exception {
         iuaLoginSteps.loginAs()
                 .composeMailAndSaveToDrafts();

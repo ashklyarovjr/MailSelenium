@@ -3,6 +3,7 @@ package Mails.IUA;
 
 import Mails.Abstracts.AbstractPage;
 import Mails.Abstracts.MailPageInterface;
+import Mails.Gmail.GmailMailForm;
 import Mails.MailsInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,6 +26,12 @@ public class IUADraftsPage extends AbstractPage implements MailPageInterface {
     @FindBy(xpath = MailsInfo.IUAMailPageInfo.SENT_MAIL_TAB_XPATH)
     private WebElement sentMailTab;
 
+    @FindBy(xpath = MailsInfo.IUAMailPageInfo.COMPOSED_DRAFT_XPATH)
+    private WebElement composedDraft;
+
+    @FindBy(xpath = "")
+    private WebElement logOutBtn;
+
     public WebElement getComposeBtn() {
         return composeBtn;
     }
@@ -35,6 +42,11 @@ public class IUADraftsPage extends AbstractPage implements MailPageInterface {
 
     public WebElement getSentMailTab() {
         return sentMailTab;
+    }
+
+    public IUAMailForm composedDraftClick() {
+        composedDraft.click();
+        return new IUAMailForm(driver);
     }
 
     @Override
@@ -53,5 +65,11 @@ public class IUADraftsPage extends AbstractPage implements MailPageInterface {
     public IUASentMailPage sentMailTabClick() {
         sentMailTab.click();
         return new IUASentMailPage(driver);
+    }
+
+    @Override
+    public IUALoginPage logoutBtnClick() {
+        logOutBtn.click();
+        return new IUALoginPage(driver);
     }
 }

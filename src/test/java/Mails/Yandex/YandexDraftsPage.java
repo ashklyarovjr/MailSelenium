@@ -24,6 +24,12 @@ public class YandexDraftsPage extends AbstractPage implements MailPageInterface 
     @FindBy(xpath = MailsInfo.YandexMailPageInfo.SENT_MAIL_TAB_XPATH)
     private WebElement sentMailTab;
 
+    @FindBy(xpath = MailsInfo.YandexMailPageInfo.COMPOSED_DRAFT_XPATH)
+    private WebElement composedDraft;
+
+    @FindBy(xpath = "")
+    private WebElement logOutBtn;
+
     public WebElement getComposeBtn() {
         return composeBtn;
     }
@@ -34,6 +40,11 @@ public class YandexDraftsPage extends AbstractPage implements MailPageInterface 
 
     public WebElement getSentMailTab() {
         return sentMailTab;
+    }
+
+    public YandexMailForm composedDraftClick() {
+        composedDraft.click();
+        return new YandexMailForm(driver);
     }
 
     @Override
@@ -52,5 +63,11 @@ public class YandexDraftsPage extends AbstractPage implements MailPageInterface 
     public YandexSentMailPage sentMailTabClick() {
         sentMailTab.click();
         return new YandexSentMailPage(driver);
+    }
+
+    @Override
+    public YandexLoginPage logoutBtnClick() {
+        logOutBtn.click();
+        return new YandexLoginPage(driver);
     }
 }

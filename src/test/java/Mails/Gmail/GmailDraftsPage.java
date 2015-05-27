@@ -28,6 +28,12 @@ public class GmailDraftsPage extends AbstractPage implements MailPageInterface {
     @FindBy(xpath = MailsInfo.GmailMailPageInfo.COMPOSED_DRAFT_XPATH)
     private WebElement composedDraft;
 
+    @FindBy(xpath = MailsInfo.GmailMailPageInfo.USER_LOGO_PIC_XPATH)
+    private WebElement userLogo;
+
+    @FindBy(xpath = MailsInfo.GmailMailPageInfo.LOGOUT_BTN_XPATH)
+    private WebElement logOutBtn;
+
     public WebElement getComposeBtn() {
         return composeBtn;
     }
@@ -43,6 +49,11 @@ public class GmailDraftsPage extends AbstractPage implements MailPageInterface {
     public GmailMailForm composedDraftClick() {
         composedDraft.click();
         return new GmailMailForm(driver);
+    }
+
+    public GmailDraftsPage userLogoClick() {
+        userLogo.click();
+        return this;
     }
 
     @Override
@@ -61,6 +72,12 @@ public class GmailDraftsPage extends AbstractPage implements MailPageInterface {
     public GmailSentMailPage sentMailTabClick() {
         sentMailTab.click();
         return new GmailSentMailPage(driver);
+    }
+
+    @Override
+    public GmailLoginPage logoutBtnClick() {
+        logOutBtn.click();
+        return new GmailLoginPage(driver);
     }
 
 }

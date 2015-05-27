@@ -30,6 +30,26 @@ public class IUAMailForm extends AbstractPage implements MailFormInterface {
     @FindBy(xpath = MailsInfo.IUAMailPageInfo.COMPOSE_FORM_SENDBTN_XPATH)
     private WebElement sendBtn;
 
+    public WebElement getToField() {
+        return toField;
+    }
+
+    public WebElement getSubjField() {
+        return subjField;
+    }
+
+    public WebElement getTextField() {
+        return textField;
+    }
+
+    public WebElement getSaveAndQuitBtn() {
+        return saveAndQuitBtn;
+    }
+
+    public WebElement getSendBtn() {
+        return sendBtn;
+    }
+
     @Override
     public IUAMailForm fillInToField(String email) {
         toField.sendKeys(email);

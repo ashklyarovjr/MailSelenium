@@ -25,6 +25,9 @@ public class YandexReceivedMailPage extends AbstractPage implements MailPageInte
     @FindBy(xpath = MailsInfo.YandexMailPageInfo.SENT_MAIL_TAB_XPATH)
     private WebElement sentMailTab;
 
+    @FindBy(xpath = "")
+    private WebElement logOutBtn;
+
     public WebElement getComposeBtn() {
         return composeBtn;
     }
@@ -53,5 +56,11 @@ public class YandexReceivedMailPage extends AbstractPage implements MailPageInte
     public YandexSentMailPage sentMailTabClick() {
         sentMailTab.click();
         return new YandexSentMailPage(driver);
+    }
+
+    @Override
+    public YandexLoginPage logoutBtnClick() {
+        logOutBtn.click();
+        return new YandexLoginPage(driver);
     }
 }

@@ -13,7 +13,7 @@ public class YandexLoginPage extends AbstractPage implements LoginPageInterface 
 
 
     public YandexLoginPage(WebDriver driver) {
-        super(driver, MailsInfo.IUALoginPageInfo.URL);
+        super(driver, MailsInfo.YandexLoginPageInfo.URL);
         PageFactory.initElements(driver, this);
     }
 
@@ -25,6 +25,7 @@ public class YandexLoginPage extends AbstractPage implements LoginPageInterface 
 
     @FindBy(xpath = MailsInfo.YandexLoginPageInfo.SUBMIT_XPATH)
     private WebElement submitBtn;
+
 
     public WebElement getUsernameInpt() {
         return usernameInpt;

@@ -3,8 +3,8 @@ package Mails;
 
 public final class MailsInfo {
     public static final class YandexLoginPageInfo {
-        public static final String URL = "https://mail.yandex.ua/";
-        public static final String USERNAME = "test.petrov.123@yandex.com";
+        public static final String URL = "https://mail.yandex.com/";
+        public static final String USERNAME = "test.petrov.123@yandex.ru";
         public static final String PASSWORD = "123an123";
         public static final String USERNAME_INPUT_XPATH = "//input[@name='login']";
         public static final String PASSWORD_INPUT_XPATH = "//input[@name='passwd']";
@@ -40,23 +40,32 @@ public final class MailsInfo {
         public static final String COMPOSE_FORM_TO_XPATH = "//textarea[@name='to']";
         public static final String COMPOSE_FORM_SUBJ_XPATH = "//input[@name='subjectbox']";
         public static final String COMPOSE_FORM_TEXT_XPATH = "//div[@role='textbox']";
-        public static final String COMPOSE_FORM_SENDBTN_XPATH = "//div[@id=':7p']";
-        public static final String COMPOSE_FORM_SAVE_AND_QUITBTN_XPATH = "//*[@id=':55']/div/div[1]/span/a";
-        public static final String COMPOSED_DRAFT_XPATH = "//tr//span[text()='" + GmailMailPageInfo.FORM_SUBJ + "']";
-
+        public static final String COMPOSE_FORM_SENDBTN_XPATH = "//tbody//div[count(div) = 2]/div[@role='button' and @data-tooltip]";
+        public static final String COMPOSE_FORM_SAVE_AND_QUITBTN_XPATH = ".//img[3]";
+        public static final String COMPOSED_DRAFT_XPATH = "//tr//span[text()='" + FORM_SUBJ + "']";
+        public static final String DRAFT_FORM_TO_FIELD = "//form/div/div/span";
+        public static final String USER_LOGO_PIC_XPATH = "(//a[contains(@href, 'plus.google.com')]/span)[3]";
+        public static final String LOGOUT_BTN_XPATH = "//a[contains(@href, 'logout')]";
     }
 
     public static final class YandexMailPageInfo {
         public static final String FORM_SUBJ = "Test";
         public static final String FORM_TEXT = "TEST";
-        public static final String COMPOSE_BTN_XPATH = "";
-        public static final String SENT_MAIL_TAB_XPATH = "";
-        public static final String DRAFTS_TAB_XPATH = "";
-        public static final String COMPOSE_FORM_TO_XPATH = "";
-        public static final String COMPOSE_FORM_SUBJ_XPATH = "";
-        public static final String COMPOSE_FORM_TEXT_XPATH = "";
-        public static final String COMPOSE_FORM_SENDBTN_XPATH = "";
-        public static final String COMPOSE_FORM_SAVE_AND_QUITBTN_XPATH = "";
+        public static final String ACCOUNT_NAME_XPATH = "//span[contains(@class, 'header-user-name')]";
+        public static final String COMPOSE_BTN_XPATH = "//a[contains(@href, 'compose')]/img";
+        public static final String SENT_MAIL_TAB_XPATH = "//div[@class='block-app']//a[contains(@href, 'sent')]";
+        public static final String DRAFTS_TAB_XPATH = "//div[@class='block-app']//a[contains(@href, 'draft')]";
+        public static final String COMPOSE_FORM_TO_XPATH = "//div[contains(@class, 'mail-input')]//input[@type = 'text' and @data-nb]";
+        public static final String COMPOSE_FORM_SUBJ_XPATH = ".//input[@id='compose-subj']";
+        public static final String COMPOSE_FORM_TEXT_XPATH = "//textarea[@id='compose-send']";
+        public static final String COMPOSE_FORM_SENDBTN_XPATH = "//table[@class='b-compose-head']//button[@type='submit']";
+        public static final String COMPOSE_FORM_SAVE_AND_QUITBTN_XPATH = "//div[contains(@class, 'message__left')]//button[contains(@data-action, 'close')]";
+        public static final String CONFIRM_CANCEL_BTN_XPATH = "//button[contains(@data-action, 'dialog.save')]";
+        public static final String COMPOSED_DRAFT_XPATH = "//div[@class='b-messages']/div[1]//span/span[contains(@class, 'firstline-wrapper')]";
+        public static final String DRAFT_FORM_TO_FIELD = "//div[@draggable]/input";
+        public static final String USER_LOGO_PIC_XPATH = "//span[contains(@class, 'user-pic')]";
+        public static final String LOGOUT_BTN_XPATH = "(//a[contains(@href, 'passport.yandex.com')])[6]";
+        public static final String YANDEX_LOGO_XPATH = "//div[contains(@class, 'logo')]";
     }
 
     public static final class IUAMailPageInfo {
@@ -70,5 +79,6 @@ public final class MailsInfo {
         public static final String COMPOSE_FORM_TEXT_XPATH = "//textarea[@id='text']";
         public static final String COMPOSE_FORM_SENDBTN_XPATH = "//div[@class='Left']/p[1]/input[@name='send']";
         public static final String COMPOSE_FORM_SAVE_AND_QUITBTN_XPATH = "//div[@class='Left']/p[1]/input[@name='save_in_drafts']";
+        public static final String COMPOSED_DRAFT_XPATH = ".//*[@id='mesgList']//div[1]//span[3]/span";
     }
 }

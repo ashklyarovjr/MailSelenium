@@ -30,6 +30,26 @@ public class YandexMailForm extends AbstractPage implements MailFormInterface {
     @FindBy(xpath = MailsInfo.YandexMailPageInfo.COMPOSE_FORM_SENDBTN_XPATH)
     private WebElement sendBtn;
 
+    @FindBy(xpath = MailsInfo.YandexMailPageInfo.CONFIRM_CANCEL_BTN_XPATH)
+    private WebElement confirmBtn;
+
+    public WebElement getToField() {
+        return toField;
+    }
+
+    public WebElement getSubjField() {
+        return subjField;
+    }
+
+    public WebElement getTextField() {
+        return textField;
+    }
+
+    public YandexReceivedMailPage confirmBtnClick() {
+        confirmBtn.click();
+        return new YandexReceivedMailPage(driver);
+    }
+
     @Override
     public YandexMailForm fillInToField(String email) {
         toField.sendKeys(email);
@@ -56,6 +76,7 @@ public class YandexMailForm extends AbstractPage implements MailFormInterface {
 
     @Override
     public YandexReceivedMailPage sendMail() {
+        sendBtn.click();
         return new YandexReceivedMailPage(driver);
     }
 }

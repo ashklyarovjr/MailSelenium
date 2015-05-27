@@ -25,6 +25,12 @@ public class GmailSentMailPage extends AbstractPage implements MailPageInterface
     @FindBy(xpath = MailsInfo.GmailMailPageInfo.SENT_MAIL_TAB_XPATH)
     private WebElement sentMailTab;
 
+    @FindBy(xpath = MailsInfo.GmailMailPageInfo.USER_LOGO_PIC_XPATH)
+    private WebElement userLogo;
+
+    @FindBy(xpath = MailsInfo.GmailMailPageInfo.LOGOUT_BTN_XPATH)
+    private WebElement logOutBtn;
+
     public WebElement getComposeBtn() {
         return composeBtn;
     }
@@ -35,6 +41,11 @@ public class GmailSentMailPage extends AbstractPage implements MailPageInterface
 
     public WebElement getSentMailTab() {
         return sentMailTab;
+    }
+
+    public GmailSentMailPage userLogoClick() {
+        userLogo.click();
+        return this;
     }
 
     @Override
@@ -55,7 +66,11 @@ public class GmailSentMailPage extends AbstractPage implements MailPageInterface
         return this;
     }
 
-
+    @Override
+    public GmailLoginPage logoutBtnClick() {
+        logOutBtn.click();
+        return new GmailLoginPage(driver);
+    }
 
 
 }

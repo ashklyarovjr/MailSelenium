@@ -17,14 +17,20 @@ public class YandexSentMailPage extends AbstractPage implements MailPageInterfac
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = MailsInfo.IUAMailPageInfo.COMPOSE_BTN_XPATH)
+    @FindBy(xpath = MailsInfo.YandexMailPageInfo.COMPOSE_BTN_XPATH)
     private WebElement composeBtn;
 
-    @FindBy(xpath = MailsInfo.IUAMailPageInfo.DRAFTS_TAB_XPATH)
+    @FindBy(xpath = MailsInfo.YandexMailPageInfo.DRAFTS_TAB_XPATH)
     private WebElement draftsTab;
 
-    @FindBy(xpath = MailsInfo.IUAMailPageInfo.SENT_MAIL_TAB_XPATH)
+    @FindBy(xpath = MailsInfo.YandexMailPageInfo.SENT_MAIL_TAB_XPATH)
     private WebElement sentMailTab;
+
+    @FindBy(xpath = MailsInfo.YandexMailPageInfo.USER_LOGO_PIC_XPATH)
+    private WebElement userLogo;
+
+    @FindBy(xpath = MailsInfo.YandexMailPageInfo.LOGOUT_BTN_XPATH)
+    private WebElement logOutBtn;
 
     public WebElement getComposeBtn() {
         return composeBtn;
@@ -36,6 +42,11 @@ public class YandexSentMailPage extends AbstractPage implements MailPageInterfac
 
     public WebElement getSentMailTab() {
         return sentMailTab;
+    }
+
+    public YandexSentMailPage userLogoClick() {
+        userLogo.click();
+        return this;
     }
 
     @Override
@@ -54,5 +65,11 @@ public class YandexSentMailPage extends AbstractPage implements MailPageInterfac
     public YandexSentMailPage sentMailTabClick() {
         sentMailTab.click();
         return this;
+    }
+
+    @Override
+    public YandexLoginPage logoutBtnClick() {
+        logOutBtn.click();
+        return new YandexLoginPage(driver);
     }
 }

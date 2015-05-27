@@ -25,7 +25,6 @@ public class IUALoginPage extends AbstractPage implements LoginPageInterface {
     @FindBy(xpath = MailsInfo.IUALoginPageInfo.SUBMIT_XPATH)
     private WebElement submitBtn;
 
-
     public WebElement getUsernameInpt() {
         return usernameInpt;
     }

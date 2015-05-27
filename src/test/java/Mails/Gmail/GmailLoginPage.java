@@ -46,6 +46,11 @@ public class GmailLoginPage extends AbstractPage implements LoginPageInterface {
         return nextBtn;
     }
 
+    public GmailLoginPage nextBtnClick() {
+        nextBtn.click();
+        return this;
+    }
+
     @Override
     public GmailLoginPage typeUsername(String username) {
         usernameInpt.sendKeys(username);

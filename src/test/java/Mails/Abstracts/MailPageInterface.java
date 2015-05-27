@@ -9,4 +9,6 @@ public interface MailPageInterface {
 
     AbstractPage sentMailTabClick();
 
+    AbstractPage logoutBtnClick();
+
 }
