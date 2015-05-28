@@ -5,6 +5,11 @@ import Mails.Gmail.*;
 import Mails.Helpers.Waits;
 import Mails.MailsInfo;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.UnhandledAlertException;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -32,6 +37,8 @@ public class GmailMailSteps {
 
 
     public GmailMailSteps composeMailAndSaveToDrafts() {
+
+        (new WebDriverWait(mainPage.getDriver(), 10)).until(ExpectedConditions.elementToBeClickable(By.xpath(MailsInfo.GmailMailPageInfo.COMPOSE_BTN_XPATH)));
 
         assertThat(mainPage.getDriver().getTitle(), containsString(MailsInfo.GmailLoginPageInfo.USERNAME));
 
@@ -71,15 +78,27 @@ public class GmailMailSteps {
 
         sentMailPage = receivedMailPage.sentMailTabClick();
 
-        Waits.waitForElementPresent(sentMailPage.getDriver(), MailsInfo.GmailMailPageInfo.COMPOSED_DRAFT_XPATH);
+        (new WebDriverWait(sentMailPage.getDriver(), 10)).until(ExpectedConditions.elementToBeClickable(By.xpath(MailsInfo.GmailMailPageInfo.COMPOSED_DRAFT_XPATH)));
 
         return this;
     }
 
     public GmailLoginSteps logOut() {
 
-        loginPage = sentMailPage.userLogoClick()
-                    .logoutBtnClick();
+        sentMailPage = sentMailPage.userLogoClick();
+
+        (new WebDriverWait(sentMailPage.getDriver(), 10)).until(ExpectedConditions.elementToBeClickable(By.xpath(MailsInfo.GmailMailPageInfo.LOGOUT_BTN_XPATH)));
+
+        try {
+
+            loginPage = sentMailPage.logoutBtnClick();
+
+        } catch (UnhandledAlertException e) {
+
+            Actions action = new Actions(sentMailPage.getDriver());
+            action.sendKeys(Keys.ENTER).build().perform();
+
+        }
 
         Waits.waitForElementPresent(loginPage.getDriver(), MailsInfo.GmailLoginPageInfo.PASSWORD_INPUT_XPATH);
 

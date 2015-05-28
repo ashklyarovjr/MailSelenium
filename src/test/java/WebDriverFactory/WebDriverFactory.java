@@ -14,13 +14,13 @@ public class WebDriverFactory extends AbstractDriverFactory {
             case "firefox":
                 return new FirefoxDriver();
             case "ie":
-                System.setProperty("webdriver.ie.driver", "D:\\HomeTask_Java\\MailSelenium\\WebDrivers\\IEDriverServer64.exe");
+                System.setProperty("webdriver.ie.driver", "..\\MailSelenium\\WebDrivers\\IEDriverServer32.exe");
                 return new InternetExplorerDriver();
             case "opera":
-                System.setProperty("webdriver.opera.driver", "D:\\HomeTask_Java\\MailSelenium\\WebDrivers\\operadriver64.exe");
+                System.setProperty("webdriver.opera.driver", "..\\MailSelenium\\WebDrivers\\operadriver64.exe");
                 return new OperaDriver();
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", "D:\\HomeTask_Java\\MailSelenium\\WebDrivers\\chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", "..\\MailSelenium\\WebDrivers\\chromedriver.exe");
                 return new ChromeDriver();
             default:
                 throw new IllegalArgumentException("This browser is undefined!");

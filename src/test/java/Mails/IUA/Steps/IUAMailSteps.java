@@ -68,6 +68,8 @@ public class IUAMailSteps {
 
     public IUALoginSteps logOut() {
 
+
+
         sentMailPage = sentMailPage.userMainPageLinkClick();
 
         Waits.waitForElementPresent(sentMailPage.getDriver(), MailsInfo.IUAMailPageInfo.LOGOUT_BTN_XPATH);
