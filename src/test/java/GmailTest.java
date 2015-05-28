@@ -14,7 +14,7 @@ public class GmailTest {
     @BeforeMethod
     public void setUp() throws Exception {
 
-        String browser = "chrome";
+        String browser = "ie";
 
         WebDriverFactory driverFactory = new WebDriverFactory();
 

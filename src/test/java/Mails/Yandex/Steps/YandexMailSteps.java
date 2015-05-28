@@ -59,13 +59,15 @@ public class YandexMailSteps {
 
         mailForm = draftsPage.composedDraftClick();
 
+        Waits.waitForElementPresent(draftsPage.getDriver(), MailsInfo.YandexMailPageInfo.DRAFT_FORM_TO_FIELD);
+
         assertThat(mailForm.getDriver().findElement(By.xpath(MailsInfo.YandexMailPageInfo.DRAFT_FORM_TO_FIELD)).getAttribute("value"), containsString(MailsInfo.IUALoginPageInfo.USERNAME));
         assertThat(mailForm.getSubjField().getAttribute("value"), containsString(MailsInfo.YandexMailPageInfo.FORM_SUBJ));
         assertThat(mailForm.getTextField().getAttribute("value"), containsString(MailsInfo.YandexMailPageInfo.FORM_TEXT));
 
         receivedMailPage =  mailForm.sendMail();
 
-        Waits.waitForElementPresent(receivedMailPage.getDriver(), MailsInfo.IUAMailPageInfo.SENT_MAIL_TAB_XPATH);
+        Waits.waitForElementPresent(receivedMailPage.getDriver(), MailsInfo.YandexMailPageInfo.SENT_MAIL_TAB_XPATH);
 
         sentMailPage = receivedMailPage.sentMailTabClick();
 
@@ -76,8 +78,11 @@ public class YandexMailSteps {
 
     public GmailLoginSteps logOut() {
 
-        loginPage = sentMailPage.userLogoClick()
-                .logoutBtnClick();
+        sentMailPage = sentMailPage.userLogoClick();
+
+        Waits.waitForElementPresent(sentMailPage.getDriver(), MailsInfo.YandexMailPageInfo.LOGOUT_BTN_XPATH);
+
+        loginPage = sentMailPage.logoutBtnClick();
 
         Waits.waitForElementPresent(loginPage.getDriver(), MailsInfo.YANDEX_LOGO_XPATH);
 

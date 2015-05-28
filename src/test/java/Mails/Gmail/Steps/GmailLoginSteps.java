@@ -6,6 +6,7 @@ import Mails.Gmail.GmailReceivedMailPage;
 import Mails.Helpers.Waits;
 import Mails.MailsInfo;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,17 +32,27 @@ public class GmailLoginSteps {
         try {
 
             receivedMailPage = loginPage.typeUsername(MailsInfo.GmailLoginPageInfo.USERNAME)
-                    .typePassword(MailsInfo.GmailLoginPageInfo.PASSWORD)
-                    .submitLogin();
+                                        .typePassword(MailsInfo.GmailLoginPageInfo.PASSWORD)
+                                        .submitLogin();
 
         } catch (ElementNotVisibleException e) {
 
-            loginPage = loginPage.nextBtnClick();
+            try {
 
-            Waits.waitForElementPresent(loginPage.getDriver(), MailsInfo.GmailLoginPageInfo.PASSWORD_INPUT_XPATH);
+                loginPage = loginPage.nextBtnClick();
 
-            loginPage.typePassword(MailsInfo.GmailLoginPageInfo.PASSWORD)
-                     .submitLogin();
+            } catch (NoSuchElementException e1) {
+
+                System.out.println("OK Then..");
+
+            } finally {
+
+                Waits.waitForElementPresent(loginPage.getDriver(), MailsInfo.GmailLoginPageInfo.PASSWORD_INPUT_XPATH);
+
+                receivedMailPage = loginPage.typePassword(MailsInfo.GmailLoginPageInfo.PASSWORD)
+                        .submitLogin();
+            }
+
         }
 
         Waits.waitForElementPresent(loginPage.getDriver(), MailsInfo.GmailMailPageInfo.COMPOSE_BTN_XPATH);

@@ -20,7 +20,7 @@ public class YandexTests {
     @BeforeMethod
     public void setUp() throws Exception {
 
-        String browser = "firefox";
+        String browser = "ie";
 
         WebDriverFactory driverFactory = new WebDriverFactory();
 

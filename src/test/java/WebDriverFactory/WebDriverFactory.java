@@ -14,7 +14,7 @@ public class WebDriverFactory extends AbstractDriverFactory {
             case "firefox":
                 return new FirefoxDriver();
             case "ie":
-                System.setProperty("webdriver.ie.driver", "D:\\HomeTask_Java\\MailSelenium\\WebDrivers\\IEDriverServer.exe");
+                System.setProperty("webdriver.ie.driver", "D:\\HomeTask_Java\\MailSelenium\\WebDrivers\\IEDriverServer64.exe");
                 return new InternetExplorerDriver();
             case "opera":
                 System.setProperty("webdriver.opera.driver", "D:\\HomeTask_Java\\MailSelenium\\WebDrivers\\operadriver64.exe");

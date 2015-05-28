@@ -5,15 +5,9 @@ import Mails.Gmail.*;
 import Mails.Helpers.Waits;
 import Mails.MailsInfo;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-
-
-import static org.openqa.selenium.lift.Finders.*;
-import static org.openqa.selenium.lift.Matchers.*;
-
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.containsString;
 
 
 public class GmailMailSteps {
@@ -38,6 +32,7 @@ public class GmailMailSteps {
 
 
     public GmailMailSteps composeMailAndSaveToDrafts() {
+
         assertThat(mainPage.getDriver().getTitle(), containsString(MailsInfo.GmailLoginPageInfo.USERNAME));
 
         mailForm = mainPage.composeMailBtnClick();
@@ -64,13 +59,15 @@ public class GmailMailSteps {
 
         mailForm = draftsPage.composedDraftClick();
 
+        Waits.waitForElementPresent(draftsPage.getDriver(), MailsInfo.GmailMailPageInfo.DRAFT_FORM_TO_FIELD);
+
         assertThat(mailForm.getDriver().findElement(By.xpath(MailsInfo.GmailMailPageInfo.DRAFT_FORM_TO_FIELD)).getText(), containsString(MailsInfo.YandexLoginPageInfo.USERNAME));
         assertThat(mailForm.getSubjField().getAttribute("value"), containsString(MailsInfo.GmailMailPageInfo.FORM_SUBJ));
         assertThat(mailForm.getTextField().getText(), containsString(MailsInfo.GmailMailPageInfo.FORM_TEXT));
 
         receivedMailPage =  mailForm.sendMail();
 
-        Waits.waitForElementPresent(receivedMailPage.getDriver(), MailsInfo.IUAMailPageInfo.SENT_MAIL_TAB_XPATH);
+        Waits.waitForElementPresent(receivedMailPage.getDriver(), MailsInfo.GmailMailPageInfo.SENT_MAIL_TAB_XPATH);
 
         sentMailPage = receivedMailPage.sentMailTabClick();
 

@@ -37,7 +37,7 @@ public final class MailsInfo {
     public static final class GmailMailPageInfo {
         public static final String FORM_SUBJ = "Test";
         public static final String FORM_TEXT = "TEST";
-        public static final String COMPOSE_BTN_XPATH = "//div[@class='z0']/div";
+        public static final String COMPOSE_BTN_XPATH = "//div[@role='button' and @gh and contains(@class, 'T')]";
         public static final String SENT_MAIL_TAB_XPATH = "//a[contains(@href, 'https://mail.google.com/mail/?pli=1#sent')]";
         public static final String DRAFTS_TAB_XPATH = "//a[contains(@href, 'https://mail.google.com/mail/?pli=1#drafts')]";
         public static final String COMPOSE_FORM_TO_XPATH = "//textarea[@name='to']";
