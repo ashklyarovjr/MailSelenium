@@ -82,7 +82,7 @@ public final class MailsInfo {
         public static final String COMPOSE_FORM_SENDBTN_XPATH = "//div[@class='Left']/p[1]/input[@name='send']";
         public static final String COMPOSE_FORM_SAVE_AND_QUITBTN_XPATH = "//div[@class='Left']/p[1]/input[@name='save_in_drafts']";
         public static final String COMPOSED_DRAFT_XPATH = ".//*[@id='mesgList']//div[1]//span[3]/span";
-        public static final String USER_OPTIONS_BUTTON_XPATH = "//div[@class='ho_nav']//li[@class = 'ho_menu_item']/span";
-        public static final String LOGOUT_BTN_XPATH = "//a[contains(@href, 'logout.php')]";
+        public static final String MAIN_PAGE_BUTTON_XPATH = "//a[contains(@href, 'www.i.ua')]";
+        public static final String LOGOUT_BTN_XPATH = "//li[@class = 'right']/a[contains(@href, 'logout.php')]";
     }
 }

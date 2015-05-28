@@ -2,7 +2,6 @@ import Mails.Gmail.Steps.GmailLoginSteps;
 import WebDriverFactory.WebDriverFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class GmailTest {
@@ -25,7 +24,8 @@ public class GmailTest {
     @Test(enabled = true)
     public void testGmail() throws Exception {
 
-        gmailLoginSteps.loginAs()
+        gmailLoginSteps
+                .loginAs()
                 .composeMailAndSaveToDrafts()
                 .openSameMailInDraftsAndSend()
                 .logOut();

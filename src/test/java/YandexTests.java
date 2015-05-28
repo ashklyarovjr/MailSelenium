@@ -34,7 +34,8 @@ public class YandexTests {
     @Test(enabled = true)
     public void testYandex() throws Exception {
 
-        yandexLoginSteps.loginAs()
+        yandexLoginSteps
+                .loginAs()
                 .composeMailAndSaveToDrafts()
                 .openSameMailInDraftsAndSend()
                 .logOut();

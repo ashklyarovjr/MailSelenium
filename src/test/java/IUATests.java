@@ -15,7 +15,7 @@ public class IUATests {
     @BeforeMethod
     public void setUp() throws Exception {
 
-        browser = "opera";
+        browser = "firefox";
 
         driverFactory = new WebDriverFactory();
 
@@ -26,7 +26,8 @@ public class IUATests {
     @Test(enabled = true)
     public void testIUA() throws Exception {
 
-        iuaLoginSteps.loginAs()
+        iuaLoginSteps
+                .loginAs()
                 .composeMailAndSaveToDrafts()
                 .openSameMailInDraftsAndSend()
                 .logOut();

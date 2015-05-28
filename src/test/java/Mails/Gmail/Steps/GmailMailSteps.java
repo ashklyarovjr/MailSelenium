@@ -49,6 +49,7 @@ public class GmailMailSteps {
     }
 
     public GmailMailSteps openSameMailInDraftsAndSend() {
+
         assertThat(mainPage.getDriver().getTitle(), containsString(MailsInfo.GmailLoginPageInfo.USERNAME));
 
         draftsPage = mainPage.draftsTabClick();

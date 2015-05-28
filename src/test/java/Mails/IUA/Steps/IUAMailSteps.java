@@ -1,15 +1,9 @@
 package Mails.IUA.Steps;
 
 
-import Mails.Gmail.GmailDraftsPage;
-import Mails.Gmail.GmailMailForm;
-import Mails.Gmail.GmailReceivedMailPage;
-import Mails.Gmail.GmailSentMailPage;
-import Mails.Gmail.Steps.GmailLoginSteps;
 import Mails.Helpers.Waits;
 import Mails.IUA.*;
 import Mails.MailsInfo;
-import org.openqa.selenium.By;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -69,7 +63,7 @@ public class IUAMailSteps {
 
     public IUALoginSteps logOut() {
 
-        sentMailPage = sentMailPage.userLogoClick();
+        sentMailPage = sentMailPage.userMainPageLinkClick();
 
         Waits.waitForElementPresent(sentMailPage.getDriver(), MailsInfo.IUAMailPageInfo.LOGOUT_BTN_XPATH);
 
