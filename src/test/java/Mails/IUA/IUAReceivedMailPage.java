@@ -25,7 +25,7 @@ public class IUAReceivedMailPage extends AbstractPage implements MailPageInterfa
     @FindBy(xpath = MailsInfo.IUAMailPageInfo.SENT_MAIL_TAB_XPATH)
     private WebElement sentMailTab;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = MailsInfo.IUAMailPageInfo.LOGOUT_BTN_XPATH)
     private WebElement logOutBtn;
 
     public WebElement getComposeBtn() {

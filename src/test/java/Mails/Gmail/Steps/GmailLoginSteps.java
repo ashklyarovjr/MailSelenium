@@ -36,9 +36,12 @@ public class GmailLoginSteps {
 
         } catch (ElementNotVisibleException e) {
 
-            receivedMailPage = loginPage.nextBtnClick()
-                    .typePassword(MailsInfo.GmailLoginPageInfo.PASSWORD)
-                    .submitLogin();
+            loginPage = loginPage.nextBtnClick();
+
+            Waits.waitForElementPresent(loginPage.getDriver(), MailsInfo.GmailLoginPageInfo.PASSWORD_INPUT_XPATH);
+
+            loginPage.typePassword(MailsInfo.GmailLoginPageInfo.PASSWORD)
+                     .submitLogin();
         }
 
         Waits.waitForElementPresent(loginPage.getDriver(), MailsInfo.GmailMailPageInfo.COMPOSE_BTN_XPATH);

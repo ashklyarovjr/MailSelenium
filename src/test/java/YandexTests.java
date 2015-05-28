@@ -13,22 +13,21 @@ import java.util.concurrent.TimeUnit;
 
 public class YandexTests {
 
-    YandexLoginSteps yandexLoginSteps;
+    private YandexLoginSteps yandexLoginSteps;
 
-    WebDriverFactory driverFactory;
-
-    String browser;
+    private WebDriver driver;
 
     @BeforeMethod
     public void setUp() throws Exception {
 
-        browser = "firefox";
+        String browser = "firefox";
 
-        driverFactory = new WebDriverFactory();
+        WebDriverFactory driverFactory = new WebDriverFactory();
 
-        yandexLoginSteps = new YandexLoginSteps(driverFactory.getDriver(browser));
+        driver = driverFactory.getDriver(browser);
 
-        driverFactory.getDriver("opera").manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        yandexLoginSteps = new YandexLoginSteps(driver);
+
     }
 
     @Test(enabled = true)
@@ -43,6 +42,6 @@ public class YandexTests {
 
     @AfterMethod
     public void tearDown() throws Exception {
-        driverFactory.getDriver(browser).quit();
+        driver.quit();
     }
 }

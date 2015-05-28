@@ -20,6 +20,8 @@ public class IUAMailSteps {
 
     IUASentMailPage sentMailPage;
 
+    IUAReceivedMailPage receivedMailPage;
+
     public IUAMailSteps(IUAReceivedMailPage mainPage) {
         this.mainPage = mainPage;
     }
@@ -53,8 +55,11 @@ public class IUAMailSteps {
         assertThat(mailForm.getSubjField().getAttribute("value"), containsString(MailsInfo.IUAMailPageInfo.FORM_SUBJ));
         assertThat(mailForm.getTextField().getText(), containsString(MailsInfo.IUAMailPageInfo.FORM_TEXT));
 
-        sentMailPage =  mailForm.sendMail()
-                .sentMailTabClick();
+        receivedMailPage =  mailForm.sendMail();
+
+        Waits.waitForElementPresent(receivedMailPage.getDriver(), MailsInfo.IUAMailPageInfo.SENT_MAIL_TAB_XPATH);
+
+        sentMailPage = receivedMailPage.sentMailTabClick();
 
         Waits.waitForElementPresent(sentMailPage.getDriver(), MailsInfo.IUAMailPageInfo.COMPOSED_DRAFT_XPATH);
 

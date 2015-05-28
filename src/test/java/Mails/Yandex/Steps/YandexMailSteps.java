@@ -22,6 +22,8 @@ public class YandexMailSteps {
 
     YandexSentMailPage sentMailPage;
 
+    YandexReceivedMailPage receivedMailPage;
+
     public YandexMailSteps(YandexReceivedMailPage mainPage) {
         this.mainPage = mainPage;
     }
@@ -61,8 +63,11 @@ public class YandexMailSteps {
         assertThat(mailForm.getSubjField().getAttribute("value"), containsString(MailsInfo.YandexMailPageInfo.FORM_SUBJ));
         assertThat(mailForm.getTextField().getAttribute("value"), containsString(MailsInfo.YandexMailPageInfo.FORM_TEXT));
 
-        sentMailPage =  mailForm.sendMail()
-                                .sentMailTabClick();
+        receivedMailPage =  mailForm.sendMail();
+
+        Waits.waitForElementPresent(receivedMailPage.getDriver(), MailsInfo.IUAMailPageInfo.SENT_MAIL_TAB_XPATH);
+
+        sentMailPage = receivedMailPage.sentMailTabClick();
 
         Waits.waitForElementPresent(sentMailPage.getDriver(), MailsInfo.YandexMailPageInfo.COMPOSED_DRAFT_XPATH);
 

@@ -1,25 +1,26 @@
 import Mails.IUA.Steps.IUALoginSteps;
 import WebDriverFactory.WebDriverFactory;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class IUATests {
 
-    IUALoginSteps iuaLoginSteps;
+    private IUALoginSteps iuaLoginSteps;
 
-    WebDriverFactory driverFactory;
-
-    String browser;
+    private WebDriver driver;
 
     @BeforeMethod
     public void setUp() throws Exception {
 
-        browser = "firefox";
+        String browser = "chrome";
 
-        driverFactory = new WebDriverFactory();
+        WebDriverFactory driverFactory = new WebDriverFactory();
 
-        iuaLoginSteps = new IUALoginSteps(driverFactory.getDriver(browser));
+        driver = driverFactory.getDriver(browser);
+
+        iuaLoginSteps = new IUALoginSteps(driver);
 
     }
 
@@ -36,6 +37,6 @@ public class IUATests {
 
     @AfterMethod
     public void tearDown() throws Exception {
-        driverFactory.getDriver(browser).quit();
+        driver.quit();
     }
 }

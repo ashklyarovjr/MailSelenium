@@ -19,7 +19,7 @@ public class WebDriverFactory extends AbstractDriverFactory {
             case "opera":
                 System.setProperty("webdriver.opera.driver", "D:\\HomeTask_Java\\MailSelenium\\WebDrivers\\operadriver64.exe");
                 return new OperaDriver();
-            case "crome":
+            case "chrome":
                 System.setProperty("webdriver.chrome.driver", "D:\\HomeTask_Java\\MailSelenium\\WebDrivers\\chromedriver.exe");
                 return new ChromeDriver();
             default:

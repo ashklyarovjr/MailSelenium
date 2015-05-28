@@ -1,23 +1,26 @@
 import Mails.Gmail.Steps.GmailLoginSteps;
 import WebDriverFactory.WebDriverFactory;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class GmailTest {
-    GmailLoginSteps gmailLoginSteps;
 
-    WebDriverFactory driverFactory;
+    private GmailLoginSteps gmailLoginSteps;
 
-    String browser;
+    private WebDriver driver;
 
     @BeforeMethod
     public void setUp() throws Exception {
-        browser = "chrome";
 
-        driverFactory = new WebDriverFactory();
+        String browser = "chrome";
 
-        gmailLoginSteps = new GmailLoginSteps(driverFactory.getDriver(browser));
+        WebDriverFactory driverFactory = new WebDriverFactory();
+
+        driver = driverFactory.getDriver(browser);
+
+        gmailLoginSteps = new GmailLoginSteps(driver);
 
     }
 
@@ -33,6 +36,6 @@ public class GmailTest {
 
     @AfterMethod
     public void tearDown() throws Exception {
-        driverFactory.getDriver(browser).quit();
+        driver.quit();
     }
 }

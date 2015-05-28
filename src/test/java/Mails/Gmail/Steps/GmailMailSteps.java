@@ -28,6 +28,8 @@ public class GmailMailSteps {
 
     GmailSentMailPage sentMailPage;
 
+    GmailReceivedMailPage receivedMailPage;
+
 
 
     public GmailMailSteps(GmailReceivedMailPage mainPage) {
@@ -38,10 +40,14 @@ public class GmailMailSteps {
     public GmailMailSteps composeMailAndSaveToDrafts() {
         assertThat(mainPage.getDriver().getTitle(), containsString(MailsInfo.GmailLoginPageInfo.USERNAME));
 
-        mainPage.composeMailBtnClick().fillInToField(MailsInfo.YandexLoginPageInfo.USERNAME)
-                                        .fillInSubjField(MailsInfo.GmailMailPageInfo.FORM_SUBJ)
-                                        .fillInText(MailsInfo.GmailMailPageInfo.FORM_TEXT)
-                                        .saveAndQuit();
+        mailForm = mainPage.composeMailBtnClick();
+
+        Waits.waitForElementPresent(mailForm.getDriver(), MailsInfo.GmailMailPageInfo.COMPOSE_FORM_TO_XPATH);
+
+        mailForm.fillInToField(MailsInfo.YandexLoginPageInfo.USERNAME)
+                .fillInSubjField(MailsInfo.GmailMailPageInfo.FORM_SUBJ)
+                .fillInText(MailsInfo.GmailMailPageInfo.FORM_TEXT)
+                .saveAndQuit();
 
         Waits.waitForElementPresent(mainPage.getDriver(), MailsInfo.GmailMailPageInfo.COMPOSE_BTN_XPATH);
 
@@ -62,8 +68,11 @@ public class GmailMailSteps {
         assertThat(mailForm.getSubjField().getAttribute("value"), containsString(MailsInfo.GmailMailPageInfo.FORM_SUBJ));
         assertThat(mailForm.getTextField().getText(), containsString(MailsInfo.GmailMailPageInfo.FORM_TEXT));
 
-        sentMailPage =  mailForm.sendMail()
-                                .sentMailTabClick();
+        receivedMailPage =  mailForm.sendMail();
+
+        Waits.waitForElementPresent(receivedMailPage.getDriver(), MailsInfo.IUAMailPageInfo.SENT_MAIL_TAB_XPATH);
+
+        sentMailPage = receivedMailPage.sentMailTabClick();
 
         Waits.waitForElementPresent(sentMailPage.getDriver(), MailsInfo.GmailMailPageInfo.COMPOSED_DRAFT_XPATH);
 
